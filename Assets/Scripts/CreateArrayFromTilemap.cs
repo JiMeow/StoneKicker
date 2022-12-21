@@ -33,12 +33,12 @@ public class CreateArrayFromTilemap : MonoBehaviour
                     if (tile.name == "tileset_grassland_8")
                     {
                         area[mapManager.height - y - 1, x] = mapManager.rock;
-                        s += "area[" + (mapManager.height - y - 1) + "," + x + "] = " + mapManager.rock + ";\n";
+                        s += "area[" + (mapManager.height - y - 1) + "," + x + "] = " + mapManager.rock + ";";
                     }
                     else if(tile.name == "tileset_grassland_29")
                     {
                         area[mapManager.height - y - 1, x] = mapManager.tree;
-                        s += "area[" + (mapManager.height - y - 1) + "," + x + "] = " + mapManager.tree + ";\n";
+                        s += "area[" + (mapManager.height - y - 1) + "," + x + "] = " + mapManager.tree + ";";
                     }
                     //else Debug.Log(tile.name);
                 }
