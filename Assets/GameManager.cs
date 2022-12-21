@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
     
     public void LoadNextStage()
     {
-        // Load next stage
         StageCount.instance.StageUp();
         Time.timeScale = 0;
         StartCoroutine(OpaqueAndLoadScene());

@@ -19,22 +19,6 @@ public class PlayerMove : MonoBehaviour
     {
         MovePlayer();
     }
-    int[] FindPlayer()
-    {
-        int[] playerPos = new int[2];
-        for (int i = 0; i < mapManager.height; i++)
-        {
-            for (int j = 0; j < mapManager.width; j++)
-            {
-                if (area[i, j] == mapManager.player)
-                {
-                    playerPos[0] = i;
-                    playerPos[1] = j;
-                }
-            }
-        }
-        return playerPos;
-    }
 
     void MovePlayer()
     {
@@ -76,11 +60,10 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    bool NotIndexOutOfRange(int[] playerPos, int directx, int directy)
+    bool isWin()
     {
-        int x = playerPos[0];
-        int y = playerPos[1];
-        if (x + directx >= 0 && x + directx < mapManager.height && y + directy >= 0 && y + directy < mapManager.width)
+        int y = FindPlayer()[1];
+        if (y >= mapManager.width - 1)
         {
             return true;
         }
@@ -93,11 +76,14 @@ public class PlayerMove : MonoBehaviour
         int y = playerPos[1];
         if (area[x + directx, y + directy] == 0)
         {
+            MoveCount.instance.DecreaseMove();
+            
             area[x, y] = 0;
             area[x + directx, y + directy] = 1;
             //areaGameobjects[x, y].transform.position = new Vector3(areaGameobjects[x, y].transform.position.x + directy * .16f, areaGameobjects[x, y].transform.position.y - directx * .16f, 0);
             areaGameobjects[x + directx, y + directy] = areaGameobjects[x, y];
             areaGameobjects[x, y] = null;
+            
             StartCoroutine(MoveAnimation(areaGameobjects[x + directx, y + directy], directx, directy));
             if (isWin())
                 GameManager.instance.LoadNextStage();
@@ -112,11 +98,14 @@ public class PlayerMove : MonoBehaviour
             {
                 return;
             }
+            MoveCount.instance.DecreaseMove();
+            
             area[x + directx, y + directy] = 0;
             area[x + directx * 2, y + directy * 2] = 2;
             //areaGameobjects[x + directx, y + directy].transform.position = new Vector3(areaGameobjects[x+directx, y+directy].transform.position.x + directy * .16f, areaGameobjects[x + directx, y + directy].transform.position.y - directx * .16f, 0);
             areaGameobjects[x + directx * 2, y + directy * 2] = areaGameobjects[x + directx, y + directy];
             areaGameobjects[x + directx, y + directy] = null;
+            
             StartCoroutine(PlayerHitAnimation(areaGameobjects[x, y], directx, directy));
             StartCoroutine(MoveAnimation(areaGameobjects[x + directx * 2, y + directy * 2], directx, directy));
         }
@@ -137,20 +126,38 @@ public class PlayerMove : MonoBehaviour
     {
         for (int i = 0; i < 20; i++)
         {
-            game.transform.position = new Vector3(game.transform.position.x + directy * .003f, game.transform.position.y - directx * .003f, 0);
+            game.transform.position = new Vector3(game.transform.position.x + directy * .0025f, game.transform.position.y - directx * .0025f, 0);
             yield return new WaitForSeconds(0.0025f);
         }
         for (int i = 0; i < 20; i++)
         {
-            game.transform.position = new Vector3(game.transform.position.x - directy * .003f, game.transform.position.y + directx * .003f, 0);
+            game.transform.position = new Vector3(game.transform.position.x - directy * .0025f, game.transform.position.y + directx * .0025f, 0);
             yield return new WaitForSeconds(0.0025f);
         }
     }
 
-    bool isWin()
+    int[] FindPlayer()
     {
-        int y = FindPlayer()[1];
-        if (y >= mapManager.width - 1)
+        int[] playerPos = new int[2];
+        for (int i = 0; i < mapManager.height; i++)
+        {
+            for (int j = 0; j < mapManager.width; j++)
+            {
+                if (area[i, j] == mapManager.player)
+                {
+                    playerPos[0] = i;
+                    playerPos[1] = j;
+                }
+            }
+        }
+        return playerPos;
+    }
+
+    bool NotIndexOutOfRange(int[] playerPos, int directx, int directy)
+    {
+        int x = playerPos[0];
+        int y = playerPos[1];
+        if (x + directx >= 0 && x + directx < mapManager.height && y + directy >= 0 && y + directy < mapManager.width)
         {
             return true;
         }
