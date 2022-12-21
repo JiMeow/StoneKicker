@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     MapManager mapManager;
     int[,] area;
     GameObject[,] areaGameobjects;
+    bool isMoveReady = true;
     void Start()
     {
         mapManager = GameObject.Find("GameManager").GetComponent<MapManager>();
@@ -37,6 +38,9 @@ public class PlayerMove : MonoBehaviour
 
     void MovePlayer()
     {
+        if (!isMoveReady)
+            return;
+        
         int[] playerPos = FindPlayer();
         int x = playerPos[0];
         int y = playerPos[1];
@@ -115,10 +119,12 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator MoveAnimation(GameObject game, int directx, int directy)
     {
+        isMoveReady = false;
         for (int i = 0; i < 20; i++)
         {
             game.transform.position = new Vector3(game.transform.position.x + directy * .008f, game.transform.position.y - directx * .008f, 0);
             yield return new WaitForSeconds(0.005f);
         }
+        isMoveReady = true;
     }
 }

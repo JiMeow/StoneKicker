@@ -7,6 +7,8 @@ public class MapManager : MonoBehaviour
     public int[,] area;
     public int player = 1;
     public int rock = 2;
+    public int tree = 3;
+    public int X = -1;
     public int height = 7;
     public int width = 13;
 
@@ -14,7 +16,7 @@ public class MapManager : MonoBehaviour
     public bool isGenerateMap = false;
     float offsetX = -1.0f;
     float offsetY = 0.48f;
-    void Awake()
+    void Start()
     {
         area = new int[height, width];
         areaGameobjects = new GameObject[height, width];
@@ -32,7 +34,7 @@ public class MapManager : MonoBehaviour
         {
             for (int j = 0; j < width; j++)
             {
-                if (area[i,j] == player)
+                if (area[i, j] == player)
                 {
                     GameObject player = Resources.Load("player") as GameObject;
                     player = Instantiate(player, new Vector3(offsetX + j * .16f, offsetY - i * .16f, 0), Quaternion.identity);
@@ -54,6 +56,16 @@ public class MapManager : MonoBehaviour
                         areaGameobjects[i, j] = stone;
                     }
                 }
+                if (area[i, j] == tree)
+                {
+                    area[i, j + 1] = X;
+                    area[i + 1, j] = X;
+                    area[i + 1, j + 1] = X;
+                    area[i + 2, j] = X;
+                    area[i + 2, j + 1] = X;
+                    GameObject tree = Resources.Load("tree") as GameObject;
+                    tree = Instantiate(tree, new Vector3(offsetX + j * .16f, offsetY - i * .16f, 0), Quaternion.identity);
+                }
             }
         }
     }
@@ -68,12 +80,12 @@ public class MapManager : MonoBehaviour
         return areaGameobjects;
     }
 
-    //eval code
-
     void _1()
     {
         area[0, 0] = 2;
+        area[4, 2] = 3;
         area[2, 3] = 2;
+        area[0, 5] = 3;
         area[5, 6] = 2;
         area[0, 7] = 2;
         area[5, 10] = 2;
