@@ -40,55 +40,85 @@ public class PlayerMove : MonoBehaviour
         int[] playerPos = FindPlayer();
         int x = playerPos[0];
         int y = playerPos[1];
-        Debug.Log("x:" + x);
-        Debug.Log("y:" + y);
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (x >= 1 && area[x - 1, y] == 0)
+            if (NotIndexOutOfRange(playerPos, -1, 0))
             {
-                area[x, y] = 0;
-                area[x - 1, y] = 1;
-                
-                areaGameobjects[x, y].transform.position = new Vector3(areaGameobjects[x, y].transform.position.x, areaGameobjects[x, y].transform.position.y + .16f, 0);
-                areaGameobjects[x - 1, y] = areaGameobjects[x, y];
-                areaGameobjects[x, y] = null;
+                Move(playerPos,-1, 0);
             }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (x < mapManager.height - 1 && area[x + 1, y] == 0)
+            if (NotIndexOutOfRange(playerPos, +1, 0))
             {
-                area[x, y] = 0;
-                area[x + 1, y] = 1;
-                
-                areaGameobjects[x, y].transform.position = new Vector3(areaGameobjects[x, y].transform.position.x, areaGameobjects[x, y].transform.position.y - .16f, 0);
-                areaGameobjects[x + 1, y] = areaGameobjects[x, y];
-                areaGameobjects[x, y] = null;
+                Move(playerPos, +1, 0);
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (y >= 1 && area[x, y - 1] == 0)
+            if (NotIndexOutOfRange(playerPos, 0, -1))
             {
-                area[x, y] = 0;
-                area[x, y - 1] = 1;
-                
-                areaGameobjects[x, y].transform.position = new Vector3(areaGameobjects[x, y].transform.position.x - .16f, areaGameobjects[x, y].transform.position.y, 0);
-                areaGameobjects[x, y - 1] = areaGameobjects[x, y];
-                areaGameobjects[x, y] = null;
+                Move(playerPos, 0, -1);
             }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (y < mapManager.width - 1 && area[x, y + 1] == 0)
+            if (NotIndexOutOfRange(playerPos, 0, +1))
             {
-                area[x, y] = 0;
-                area[x, y + 1] = 1;
-                
-                areaGameobjects[x, y].transform.position = new Vector3(areaGameobjects[x, y].transform.position.x + .16f, areaGameobjects[x, y].transform.position.y, 0);
-                areaGameobjects[x, y + 1] = areaGameobjects[x, y];
-                areaGameobjects[x, y] = null;
+                Move(playerPos, 0, +1);
             }
+        }
+    }
+
+    bool NotIndexOutOfRange(int[] playerPos, int directx, int directy)
+    {
+        int x = playerPos[0];
+        int y = playerPos[1];
+        if (x + directx >= 0 && x + directx < mapManager.height && y + directy >= 0 && y + directy < mapManager.width)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void Move(int[] playerPos, int directx,int directy)
+    {
+        int x = playerPos[0];
+        int y = playerPos[1];
+        if (area[x + directx, y + directy] == 0)
+        {
+            area[x, y] = 0;
+            area[x + directx, y + directy] = 1;
+            //areaGameobjects[x, y].transform.position = new Vector3(areaGameobjects[x, y].transform.position.x + directy * .16f, areaGameobjects[x, y].transform.position.y - directx * .16f, 0);
+            areaGameobjects[x + directx, y + directy] = areaGameobjects[x, y];
+            areaGameobjects[x, y] = null;
+            StartCoroutine(MoveAnimation(areaGameobjects[x + directx, y + directy], directx, directy));
+        }
+        else if (area[x + directx, y + directy] == mapManager.rock )
+        {
+            if (!NotIndexOutOfRange(playerPos, directx*2, directy*2))
+            {
+                return;
+            }
+            if (area[x + directx * 2, y + directy * 2] != 0)
+            {
+                return;
+            }
+            area[x + directx, y + directy] = 0;
+            area[x + directx * 2, y + directy * 2] = 2;
+            //areaGameobjects[x + directx, y + directy].transform.position = new Vector3(areaGameobjects[x+directx, y+directy].transform.position.x + directy * .16f, areaGameobjects[x + directx, y + directy].transform.position.y - directx * .16f, 0);
+            areaGameobjects[x + directx * 2, y + directy * 2] = areaGameobjects[x + directx, y + directy];
+            areaGameobjects[x + directx, y + directy] = null;
+            StartCoroutine(MoveAnimation(areaGameobjects[x + directx * 2, y + directy * 2], directx, directy));
+        }
+    }
+
+    IEnumerator MoveAnimation(GameObject game, int directx, int directy)
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            game.transform.position = new Vector3(game.transform.position.x + directy * .008f, game.transform.position.y - directx * .008f, 0);
+            yield return new WaitForSeconds(0.005f);
         }
     }
 }

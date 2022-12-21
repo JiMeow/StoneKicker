@@ -11,20 +11,21 @@ public class MapManager : MonoBehaviour
     public int width = 13;
 
     public GameObject[,] areaGameobjects;
+    public bool isGenerateMap = false;
     float offsetX = -1.0f;
     float offsetY = 0.48f;
-    void Start()
+    void Awake()
     {
         area = new int[height, width];
         areaGameobjects = new GameObject[height, width];
         area[3, 0] = 1;
-        area[0, 1] = 2;
-        area[0, 2] = 2;
-        DrawMap();
+        if (!isGenerateMap)
+            DrawMap();
     }
 
-    void DrawMap()
+    public void DrawMap()
     {
+        gameObject.SendMessage("_1");
         GameObject stone1 = Resources.Load("stone1") as GameObject;
         GameObject stone2 = Resources.Load("stone2") as GameObject;
         for (int i = 0; i < height; i++)
@@ -65,5 +66,18 @@ public class MapManager : MonoBehaviour
     public GameObject[,] GetMapGameobjects()
     {
         return areaGameobjects;
+    }
+
+    //eval code
+
+    void _1()
+    {
+        area[0, 0] = 2;
+        area[2, 3] = 2;
+        area[5, 6] = 2;
+        area[0, 7] = 2;
+        area[5, 10] = 2;
+        area[2, 10] = 2;
+        area[6, 12] = 2;
     }
 }
