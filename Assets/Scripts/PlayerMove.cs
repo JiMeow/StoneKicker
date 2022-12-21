@@ -51,14 +51,14 @@ public class PlayerMove : MonoBehaviour
                 Move(playerPos,-1, 0);
             }
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (NotIndexOutOfRange(playerPos, +1, 0))
             {
                 Move(playerPos, +1, 0);
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             if (NotIndexOutOfRange(playerPos, 0, -1))
@@ -66,7 +66,7 @@ public class PlayerMove : MonoBehaviour
                 Move(playerPos, 0, -1);
             }
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             if (NotIndexOutOfRange(playerPos, 0, +1))
