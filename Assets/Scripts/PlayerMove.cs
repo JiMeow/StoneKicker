@@ -117,6 +117,7 @@ public class PlayerMove : MonoBehaviour
             //areaGameobjects[x + directx, y + directy].transform.position = new Vector3(areaGameobjects[x+directx, y+directy].transform.position.x + directy * .16f, areaGameobjects[x + directx, y + directy].transform.position.y - directx * .16f, 0);
             areaGameobjects[x + directx * 2, y + directy * 2] = areaGameobjects[x + directx, y + directy];
             areaGameobjects[x + directx, y + directy] = null;
+            StartCoroutine(PlayerHitAnimation(areaGameobjects[x, y], directx, directy));
             StartCoroutine(MoveAnimation(areaGameobjects[x + directx * 2, y + directy * 2], directx, directy));
         }
     }
@@ -130,6 +131,20 @@ public class PlayerMove : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
         isMoveReady = true;
+    }
+
+    IEnumerator PlayerHitAnimation(GameObject game, int directx, int directy)
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            game.transform.position = new Vector3(game.transform.position.x + directy * .003f, game.transform.position.y - directx * .003f, 0);
+            yield return new WaitForSeconds(0.0025f);
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            game.transform.position = new Vector3(game.transform.position.x - directy * .003f, game.transform.position.y + directx * .003f, 0);
+            yield return new WaitForSeconds(0.0025f);
+        }
     }
 
     bool isWin()
