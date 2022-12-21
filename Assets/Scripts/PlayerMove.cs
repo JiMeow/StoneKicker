@@ -60,6 +60,7 @@ public class PlayerMove : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             if (NotIndexOutOfRange(playerPos, 0, -1))
             {
                 Move(playerPos, 0, -1);
@@ -67,6 +68,7 @@ public class PlayerMove : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             if (NotIndexOutOfRange(playerPos, 0, +1))
             {
                 Move(playerPos, 0, +1);
