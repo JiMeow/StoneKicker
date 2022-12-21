@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     bool isMoveReady = true;
     void Start()
     {
-        mapManager = GameObject.Find("GameManager").GetComponent<MapManager>();
+        mapManager = GameObject.Find("GameController").GetComponent<MapManager>();
         area = mapManager.GetMap();
         areaGameobjects = mapManager.GetMapGameobjects();
     }
@@ -77,7 +77,9 @@ public class PlayerMove : MonoBehaviour
         if (area[x + directx, y + directy] == 0)
         {
             MoveCount.instance.DecreaseMove();
-            
+            if (MoveCount.instance.movecount < 0)
+                return;
+
             area[x, y] = 0;
             area[x + directx, y + directy] = 1;
             //areaGameobjects[x, y].transform.position = new Vector3(areaGameobjects[x, y].transform.position.x + directy * .16f, areaGameobjects[x, y].transform.position.y - directx * .16f, 0);
@@ -98,8 +100,11 @@ public class PlayerMove : MonoBehaviour
             {
                 return;
             }
-            MoveCount.instance.DecreaseMove();
             
+            MoveCount.instance.DecreaseMove();
+            if (MoveCount.instance.movecount < 0)
+                return;
+
             area[x + directx, y + directy] = 0;
             area[x + directx * 2, y + directy * 2] = 2;
             //areaGameobjects[x + directx, y + directy].transform.position = new Vector3(areaGameobjects[x+directx, y+directy].transform.position.x + directy * .16f, areaGameobjects[x + directx, y + directy].transform.position.y - directx * .16f, 0);

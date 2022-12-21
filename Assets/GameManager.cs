@@ -38,9 +38,10 @@ public class GameManager : MonoBehaviour
     public void LoadThisStage()
     {
         Time.timeScale = 0;
+        StartCoroutine(BlackPlayer());
         StartCoroutine(OpaqueAndLoadScene());
     }
-    
+
     public void LoadNextStage()
     {
         StageCount.instance.StageUp();
@@ -70,5 +71,20 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator BlackPlayer()
+    {
+        GameObject player = GameObject.Find("player(Clone)");
+        SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
+        Color color = playerSprite.color;
+        while (color.r != 0)
+        {
+            color.r -= 0.01f;
+            color.g -= 0.01f;
+            color.b -= 0.01f;
+            playerSprite.color = color;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
     }
 }
