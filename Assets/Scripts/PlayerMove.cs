@@ -22,9 +22,9 @@ public class PlayerMove : MonoBehaviour
     int[] FindPlayer()
     {
         int[] playerPos = new int[2];
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < mapManager.height; i++)
         {
-            for (int j = 0; j < 13; j++)
+            for (int j = 0; j < mapManager.width; j++)
             {
                 if (area[i, j] == mapManager.player)
                 {
@@ -99,6 +99,8 @@ public class PlayerMove : MonoBehaviour
             areaGameobjects[x + directx, y + directy] = areaGameobjects[x, y];
             areaGameobjects[x, y] = null;
             StartCoroutine(MoveAnimation(areaGameobjects[x + directx, y + directy], directx, directy));
+            if (isWin())
+                GameManager.instance.LoadNextStage();
         }
         else if (area[x + directx, y + directy] == mapManager.rock )
         {
@@ -128,5 +130,15 @@ public class PlayerMove : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
         isMoveReady = true;
+    }
+
+    bool isWin()
+    {
+        int y = FindPlayer()[1];
+        if (y >= mapManager.width - 1)
+        {
+            return true;
+        }
+        return false;
     }
 }

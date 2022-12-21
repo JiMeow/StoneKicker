@@ -8,9 +8,10 @@ public class MapManager : MonoBehaviour
     public int player = 1;
     public int rock = 2;
     public int tree = 3;
+    public int goal = 4;
     public int X = -1;
-    public int height = 7;
-    public int width = 13;
+    public int height;
+    public int width;
 
     public GameObject[,] areaGameobjects;
     public bool GenerateMap = true;
@@ -22,12 +23,13 @@ public class MapManager : MonoBehaviour
         areaGameobjects = new GameObject[height, width];
         area[3, 0] = 1;
         if (GenerateMap)
-            DrawMap();
+            DrawMap(StageCount.instance.nowstage);
     }
 
-    public void DrawMap()
+    public void DrawMap(int stage)
     {
-        gameObject.SendMessage("_1");
+        string stagename = "_" + stage;
+        gameObject.SendMessage(stagename);
         GameObject stone1 = Resources.Load("stone1") as GameObject;
         GameObject stone2 = Resources.Load("stone2") as GameObject;
         for (int i = 0; i < height; i++)
@@ -85,6 +87,21 @@ public class MapManager : MonoBehaviour
     {
         return areaGameobjects;
     }
+    void _1()
+    {
+        area[0, 0] = 2;
+        area[6, 1] = 2;
+        area[2, 3] = 2;
+        area[0, 5] = 3;
+        area[5, 6] = 2;
+        area[4, 6] = 2;
+        area[6, 7] = 2;
+        area[3, 7] = 2;
+        area[4, 8] = 3;
+        area[3, 11] = 2;
+        area[0, 11] = 2;
+        area[6, 12] = 2;
+    }
 
     void _2()
     {
@@ -104,6 +121,6 @@ public class MapManager : MonoBehaviour
         area[5, 8] = 3;
         area[5, 10] = 2;
         area[2, 10] = 2;
-        area[6, 12] = 2;
+        area[6, 13] = 2;
     }
 }

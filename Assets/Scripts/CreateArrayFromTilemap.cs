@@ -13,7 +13,7 @@ public class CreateArrayFromTilemap : MonoBehaviour
         mapManager = GameObject.Find("GameManager").GetComponent<MapManager>();
         area = mapManager.GetMap();
         CreateMap();
-        mapManager.DrawMap();
+        mapManager.DrawMap(StageCount.instance.nowstage);
     }
 
     void CreateMap()
