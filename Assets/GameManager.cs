@@ -27,12 +27,25 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Transparent());
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            LoadThisStage();
+        }
+    }
+
+    public void LoadThisStage()
+    {
+        Time.timeScale = 0;
+        StartCoroutine(OpaqueAndLoadScene());
+    }
+    
     public void LoadNextStage()
     {
         // Load next stage
         StageCount.instance.StageUp();
         Time.timeScale = 0;
-
         StartCoroutine(OpaqueAndLoadScene());
     }
 
