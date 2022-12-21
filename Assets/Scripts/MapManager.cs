@@ -106,6 +106,23 @@ public class MapManager : MonoBehaviour
     void _2()
     {
         area[0, 0] = 2;
+        area[6, 1] = 2;
+        area[2, 3] = 2;
+        area[0, 5] = 3;
+        area[5, 6] = 2;
+        area[4, 6] = 2;
+        area[6, 7] = 2;
+        area[3, 7] = 2;
+        area[4, 8] = 3;
+        area[3, 8] = 2;
+        area[3, 11] = 2;
+        area[0, 11] = 2;
+        area[6, 12] = 2;
+    }
+
+    void _3()
+    {
+        area[0, 0] = 2;
         area[4, 2] = 3;
         area[2, 3] = 2;
         area[6, 4] = 2;
