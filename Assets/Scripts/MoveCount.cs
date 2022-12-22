@@ -32,7 +32,7 @@ public class MoveCount : MonoBehaviour
         movecount--;
         if(movecount < 0)
         {
-            GameManager.instance.LoadThisStage();
+            GameManager.instance.RestartStage();
         }
         else
         {

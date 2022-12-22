@@ -31,13 +31,14 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            LoadThisStage();
+            RestartStage();
         }
     }
 
-    public void LoadThisStage()
+    public void RestartStage()
     {
         Time.timeScale = 0;
+        //StageCount.instance.nowstage = 1;
         StartCoroutine(BlackPlayer());
         StartCoroutine(OpaqueAndLoadScene());
     }
