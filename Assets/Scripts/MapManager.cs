@@ -139,7 +139,6 @@ public class MapManager : MonoBehaviour
         MoveCount.instance.movecount = 30;
         area[6, 0] = 2; area[0, 0] = 2; area[2, 1] = 2; area[4, 2] = 2; area[5, 3] = 2; area[3, 3] = 2; area[0, 3] = 3; area[4, 4] = 2; area[6, 5] = 2; area[5, 5] = 2; area[4, 5] = 2; area[3, 5] = 2; area[2, 6] = 2; area[5, 7] = 2; area[3, 7] = 2; area[1, 7] = 2; area[6, 8] = 2; area[4, 8] = 2; area[2, 8] = 2; area[5, 9] = 2; area[2, 9] = 2; area[1, 9] = 2; area[0, 9] = 2; area[6, 10] = 2; area[4, 10] = 2; area[2, 10] = 2; area[5, 11] = 2; area[3, 11] = 2; area[2, 11] = 2; area[4, 12] = 2; area[2, 12] = 2; area[0, 12] = 2; area[6, 13] = 2; area[5, 13] = 2; area[3, 13] = 2;
     }
-
     void _10()
     {
         MoveCount.instance.movecount = 29;
