@@ -3953,7 +3953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d9e3e233f8ccd49b26fb5dc84f23df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nowstage: 10
+  nowstage: 1
 --- !u!4 &2095710277
 Transform:
   m_ObjectHideFlags: 0
