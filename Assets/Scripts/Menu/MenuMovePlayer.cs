@@ -21,7 +21,7 @@ public class MenuMovePlayer : MonoBehaviour
         if (isAnimation)
             return;
         isAnimation = true;
-        if (transform.position.x > 1.35f)
+        if (transform.position.x > 1.30f)
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             isgo = false;
@@ -46,6 +46,11 @@ public class MenuMovePlayer : MonoBehaviour
             yield return new WaitForSeconds(0.0025f);
         }
         yield return new WaitForSeconds(1f);
+        if (transform.position.x > 1.30f)
+        {
+            isAnimation = false;
+            yield break;
+        }
         PlayerKickStone();
     }
     

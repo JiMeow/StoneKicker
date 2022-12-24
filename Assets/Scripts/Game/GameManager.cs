@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Transparent()
     {
+        if (fadeImage == null)
+            yield break;
         Color color = fadeImage.color;
         while (color.a > 0)
         {

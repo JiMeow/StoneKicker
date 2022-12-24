@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageCount : MonoBehaviour
 {
@@ -19,8 +20,22 @@ public class StageCount : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        TryToSetStageNumber();
+    }
+
     public void StageUp()
     {
         nowstage++;
+    }
+
+    void TryToSetStageNumber()
+    {
+        GameObject stageNumber = GameObject.Find("StageNumber");
+        if (stageNumber != null)
+        {
+            stageNumber.GetComponent<Text>().text = "Stage: " + nowstage;
+        }
     }
 }
