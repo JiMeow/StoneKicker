@@ -139,6 +139,7 @@ public class PlayerMove : MonoBehaviour
             game.transform.position = new Vector3(game.transform.position.x - directy * .0025f, game.transform.position.y + directx * .0025f, 0);
             yield return new WaitForSeconds(0.0025f);
         }
+        SoundKickStone.instance.PlayKickSound();
     }
 
     int[] FindPlayer()

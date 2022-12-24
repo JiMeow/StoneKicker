@@ -71,6 +71,7 @@ public class MenuMovePlayer : MonoBehaviour
             transform.position = new Vector3(transform.position.x - speed * .0025f, transform.position.y, 0);
             yield return new WaitForSeconds(0.0025f);
         }
+        SoundKickStone.instance.PlayKickSound();
         stone.GetComponent<MenuStoneMove>().MoveForward();
         yield return new WaitForSeconds(0.25f);
         startPosX = stone.transform.position.x - 0.19f;
