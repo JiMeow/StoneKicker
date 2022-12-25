@@ -12,6 +12,7 @@ public class MapManager : MonoBehaviour
     public int X = -1;
     public int height;
     public int width;
+    public int numberOfStage = 10;
 
     public GameObject[,] areaGameobjects;
     public bool GenerateMap = true;

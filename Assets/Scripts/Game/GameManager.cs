@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
     }
 
     Image fadeImage;
+    MapManager map;
 
     private void Start()
     {
         fadeImage = GameObject.Find("Bg").GetComponent<Image>();
+        map = FindObjectOfType<MapManager>().GetComponent<MapManager>();
         StartCoroutine(Transparent());
     }
 
@@ -84,7 +86,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Menu");
             yield break;
         }
-        if (StageCount.instance.nowstage == 11)
+        if (StageCount.instance.nowstage == map.numberOfStage + 1)
         {
             SceneManager.LoadScene("Ending");
             yield break;
