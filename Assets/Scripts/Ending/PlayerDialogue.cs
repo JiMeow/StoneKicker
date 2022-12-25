@@ -89,7 +89,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if (StageCount.instance == null)
             return;
-        if (StageCount.instance.restart <= 10)
+        if (StageCount.instance.restart <= 4)
             return;
         int random = Random.Range(0, dialogueDejavu.Length);
         playerDialogue.text = "";
