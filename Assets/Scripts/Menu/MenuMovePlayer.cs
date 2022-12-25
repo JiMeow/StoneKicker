@@ -21,6 +21,8 @@ public class MenuMovePlayer : MonoBehaviour
         if (isAnimation)
             return;
         isAnimation = true;
+
+        // turn back;
         if (transform.position.x > 1.30f)
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
@@ -38,6 +40,7 @@ public class MenuMovePlayer : MonoBehaviour
         StartCoroutine(MoveToPosCoroutine());
     }
 
+    // move to startPoxX
     IEnumerator MoveToPosCoroutine()
     {
         while (transform.position.x < startPosX)
@@ -46,6 +49,7 @@ public class MenuMovePlayer : MonoBehaviour
             yield return new WaitForSeconds(0.0025f);
         }
         yield return new WaitForSeconds(1f);
+        // if end of screen move back
         if (transform.position.x > 1.30f)
         {
             isAnimation = false;
@@ -59,6 +63,7 @@ public class MenuMovePlayer : MonoBehaviour
         StartCoroutine(PlayerKickStoneCoroutine());
     }
 
+    // do like kick stone and also call stone to move forward
     IEnumerator PlayerKickStoneCoroutine()
     {
         Sound.instance.PlayKickSound();
@@ -83,6 +88,7 @@ public class MenuMovePlayer : MonoBehaviour
         StartCoroutine(MoveBackToPosCoroutine());
     }
 
+    // move back to start of screen and a little bit more
     IEnumerator MoveBackToPosCoroutine()
     {
         while (transform.position.x > backPosX)

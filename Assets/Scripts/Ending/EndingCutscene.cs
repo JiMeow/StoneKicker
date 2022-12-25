@@ -15,18 +15,28 @@ public class EndingCutscene : MonoBehaviour
     IEnumerator ending()
     {
         yield return new WaitForSeconds(2f);
+        //move to middle of screen
         while (player.transform.position.x < -0.088f)
         {
             player.transform.position += new Vector3(0.0025f, 0, 0);
             yield return new WaitForSeconds(0.0025f);
         }
         yield return new WaitForSeconds(2f);
+        
+        // make player turn left
         player.transform.localScale = new Vector3(-player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z);
+        
+        // make dialogue is alway scale +
         GameObject dialoguePlayerGameObject = player.transform.GetChild(0).gameObject;
         dialoguePlayerGameObject.transform.localScale = new Vector3(-dialoguePlayerGameObject.transform.localScale.x, dialoguePlayerGameObject.transform.localScale.y, dialoguePlayerGameObject.transform.localScale.z);
+        
+        // type dialogue endgame
         PlayerDialogue dialoguePlayer = dialoguePlayerGameObject.GetComponent<PlayerDialogue>();
         dialoguePlayer.Ending();
+        
         yield return new WaitForSeconds(32f);
+
+        // load menu scene
         GameManager.instance.LoadNextStage();
     }
 }

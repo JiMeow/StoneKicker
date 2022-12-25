@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0) 
+            return;
         if (Input.GetKeyDown(KeyCode.R))
         {
             RestartStage();

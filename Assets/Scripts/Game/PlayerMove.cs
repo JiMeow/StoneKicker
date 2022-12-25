@@ -76,6 +76,7 @@ public class PlayerMove : MonoBehaviour
     {
         int x = playerPos[0];
         int y = playerPos[1];
+        // normal move
         if (area[x + directx, y + directy] == 0)
         {
             MoveCount.instance.DecreaseMove();
@@ -84,7 +85,6 @@ public class PlayerMove : MonoBehaviour
 
             area[x, y] = 0;
             area[x + directx, y + directy] = 1;
-            //areaGameobjects[x, y].transform.position = new Vector3(areaGameobjects[x, y].transform.position.x + directy * .16f, areaGameobjects[x, y].transform.position.y - directx * .16f, 0);
             areaGameobjects[x + directx, y + directy] = areaGameobjects[x, y];
             areaGameobjects[x, y] = null;
             
@@ -92,6 +92,7 @@ public class PlayerMove : MonoBehaviour
             if (isWin())
                 GameManager.instance.LoadNextStage();
         }
+        // move colide with rock
         else if (area[x + directx, y + directy] == mapManager.rock )
         {
             if (!NotIndexOutOfRange(playerPos, directx*2, directy*2))
@@ -109,7 +110,6 @@ public class PlayerMove : MonoBehaviour
 
             area[x + directx, y + directy] = 0;
             area[x + directx * 2, y + directy * 2] = 2;
-            //areaGameobjects[x + directx, y + directy].transform.position = new Vector3(areaGameobjects[x+directx, y+directy].transform.position.x + directy * .16f, areaGameobjects[x + directx, y + directy].transform.position.y - directx * .16f, 0);
             areaGameobjects[x + directx * 2, y + directy * 2] = areaGameobjects[x + directx, y + directy];
             areaGameobjects[x + directx, y + directy] = null;
             
@@ -118,6 +118,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    // player and rock move animation
     IEnumerator MoveAnimation(GameObject game, int directx, int directy)
     {
         isMoveReady = false;
@@ -129,6 +130,7 @@ public class PlayerMove : MonoBehaviour
         isMoveReady = true;
     }
 
+    // player push rock animaiton
     IEnumerator PlayerHitAnimation(GameObject game, int directx, int directy)
     {
         Sound.instance.PlayKickSound();

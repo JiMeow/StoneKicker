@@ -12,7 +12,7 @@ public class MenuButton : MonoBehaviour
 
     public void ButtonLoadSetting()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Setting");
     }
 
     public void ButtonLoadCredit()

@@ -8,13 +8,13 @@ public class PlayerDialogue : MonoBehaviour
 {
     public static PlayerDialogue instance;
     public float typeSpeed = 0.05f;
+    public float typeEndingSpeed = 0.1f;
     public float timeDisplay = 3f;
 
     TMP_Text playerDialogue;
     string[] dialogueDejavu;
     [SerializeField] 
     string[] ending;
-    public float typeEndingSpeed = 0.1f;
 
     private void Awake()
     {
@@ -53,18 +53,18 @@ public class PlayerDialogue : MonoBehaviour
             "I feel like I've been in this exact situation before.",
             "I could have sworn I've seen this all before."
         };
-        if (StageCount.instance != null && StageCount.instance.nowstage <= 10)
-        {
-            Invoke("DejaVu",1.5f);
-        }
+        
+        Invoke("DejaVu",1.5f);
     }
 
     private void Update()
     {
+        // make dialogue alway scale +
         float parentXscale = transform.parent.transform.localScale.x/Mathf.Abs(transform.parent.transform.localScale.x);
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x)*parentXscale, transform.localScale.y, transform.localScale.z);
     }
     
+    // dialogue in ending cutscene
     public void Ending()
     {
         StartCoroutine(EndingCoroutine());
@@ -84,6 +84,7 @@ public class PlayerDialogue : MonoBehaviour
         }
     }
 
+    // dialogue when die more than 10 times
     public void DejaVu()
     {
         if (StageCount.instance == null)
@@ -95,6 +96,7 @@ public class PlayerDialogue : MonoBehaviour
         StartCoroutine(TypeText(dialogueDejavu[random]));
     }
 
+    // type text with given string
     IEnumerator TypeText(string s)
     {
         foreach (char word in s)
