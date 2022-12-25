@@ -57,10 +57,6 @@ public class PlayerDialogue : MonoBehaviour
         {
             Invoke("DejaVu",1.5f);
         }
-        else
-        {
-            Ending();
-        }
     }
 
     private void Update()
@@ -76,7 +72,6 @@ public class PlayerDialogue : MonoBehaviour
 
     IEnumerator EndingCoroutine()
     {
-        yield return new WaitForSeconds(3f);
         foreach (string s in ending)
         {
             foreach(char word in s)
