@@ -17,6 +17,8 @@ public class PlayerMove : MonoBehaviour
     
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
         MovePlayer();
     }
 
@@ -129,6 +131,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator PlayerHitAnimation(GameObject game, int directx, int directy)
     {
+        Sound.instance.PlayKickSound();
         for (int i = 0; i < 20; i++)
         {
             game.transform.position = new Vector3(game.transform.position.x + directy * .0025f, game.transform.position.y - directx * .0025f, 0);
@@ -139,7 +142,6 @@ public class PlayerMove : MonoBehaviour
             game.transform.position = new Vector3(game.transform.position.x - directy * .0025f, game.transform.position.y + directx * .0025f, 0);
             yield return new WaitForSeconds(0.0025f);
         }
-        SoundKickStone.instance.PlayKickSound();
     }
 
     int[] FindPlayer()

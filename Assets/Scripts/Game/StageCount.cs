@@ -7,6 +7,7 @@ public class StageCount : MonoBehaviour
 {
     public static StageCount instance;
     public int nowstage = 1;
+    public int restart = 0;
     void Awake()
     {
         DontDestroyOnLoad(this);

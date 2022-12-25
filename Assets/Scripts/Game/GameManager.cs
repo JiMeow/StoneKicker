@@ -37,14 +37,17 @@ public class GameManager : MonoBehaviour
 
     public void RestartStage()
     {
+        StageCount.instance.restart += 1;
+        Sound.instance.PlayDeadSound();
         Time.timeScale = 0;
-        //StageCount.instance.nowstage = 1;
+        StageCount.instance.nowstage = 1;
         StartCoroutine(BlackPlayer());
         StartCoroutine(OpaqueAndLoadScene());
     }
 
     public void LoadNextStage()
     {
+        Sound.instance.PlayWinSound();
         StageCount.instance.StageUp();
         Time.timeScale = 0;
         StartCoroutine(OpaqueAndLoadScene());
