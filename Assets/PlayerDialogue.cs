@@ -53,7 +53,7 @@ public class PlayerDialogue : MonoBehaviour
             "I feel like I've been in this exact situation before.",
             "I could have sworn I've seen this all before."
         };
-        if (StageCount.instance.nowstage <= 10)
+        if (StageCount.instance != null && StageCount.instance.nowstage <= 10)
         {
             Invoke("DejaVu",1.5f);
         }

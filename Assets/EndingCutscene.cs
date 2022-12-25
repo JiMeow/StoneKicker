@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndingCutscene : MonoBehaviour
 {
@@ -25,5 +26,7 @@ public class EndingCutscene : MonoBehaviour
         dialoguePlayerGameObject.transform.localScale = new Vector3(-dialoguePlayerGameObject.transform.localScale.x, dialoguePlayerGameObject.transform.localScale.y, dialoguePlayerGameObject.transform.localScale.z);
         PlayerDialogue dialoguePlayer = dialoguePlayerGameObject.GetComponent<PlayerDialogue>();
         dialoguePlayer.Ending();
+        yield return new WaitForSeconds(32f);
+        GameManager.instance.LoadNextStage();
     }
 }
