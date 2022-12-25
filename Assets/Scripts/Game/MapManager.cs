@@ -113,7 +113,7 @@ public class MapManager : MonoBehaviour
 
     void _5()
     {
-        MoveCount.instance.movecount = 30;
+        MoveCount.instance.movecount = 29;
         area[0, 0] = rock;area[6, 13] = rock;area[0, 5] = tree;area[0, 7] = rock;area[0, 8] = rock;area[0, 11] = rock;area[0, 13] = rock;area[1, 0] = rock;area[1, 3] = rock;area[1, 4] = rock;area[1, 8] = rock;area[1, 11] = rock;area[2, 0] = rock;area[2, 1] = rock;area[2, 2] = rock;area[2, 8] = rock;area[2, 10] = rock;area[2, 11] = rock;area[2, 13] = rock;area[3, 2] = rock;area[3, 3] = rock;area[3, 5] = rock;area[3, 7] = rock;area[3, 8] = rock;area[3, 10] = rock;area[3, 13] = rock;area[4, 4] = rock;area[4, 5] = rock;area[4, 6] = rock;area[4, 7] = rock;area[4, 9] = rock;area[4, 10] = rock;area[5, 1] = rock;area[5, 2] = rock;area[5, 3] = rock;area[5, 8] = rock;area[5, 12] = rock;area[5, 13] = rock;area[6, 0] = rock;area[6, 2] = rock;area[6, 3] = rock;area[6, 4] = rock;area[6, 7] = rock;area[6, 8] = rock;area[6, 9] = rock;area[6, 12] = rock;area[6, 13] = rock;area[3, 0] = player;
     }
 
@@ -124,7 +124,7 @@ public class MapManager : MonoBehaviour
     }
     void _7()
     {
-        MoveCount.instance.movecount = 22;
+        MoveCount.instance.movecount = 20;
         area[0, 0] = rock; area[6, 13] = rock; area[0, 0] = rock; area[0, 2] = rock; area[0, 6] = rock; area[0, 7] = rock; area[0, 10] = rock; area[0, 11] = tree; area[0, 13] = rock; area[1, 5] = rock; area[1, 6] = rock; area[1, 7] = rock; area[1, 8] = rock; area[1, 13] = rock; area[2, 2] = rock; area[2, 3] = rock; area[2, 6] = rock; area[3, 1] = rock; area[3, 2] = rock; area[3, 3] = rock; area[3, 4] = rock; area[3, 7] = rock; area[3, 9] = rock; area[4, 0] = rock; area[4, 6] = rock; area[4, 7] = rock; area[4, 11] = rock; area[4, 12] = rock; area[4,13] = rock; area[5, 0] = rock; area[5, 3] = rock; area[5, 5] = rock; area[5, 6] = rock; area[5, 7] = rock; area[5, 10] = rock; area[6, 0] = rock; area[6, 1] = rock; area[6, 2] = rock; area[6, 4] = rock; area[6, 5] = rock; area[6, 7] = rock; area[6, 10] = rock; area[6, 11] = rock; area[6, 13] = rock; area[3, 0] = player;
     }
     
