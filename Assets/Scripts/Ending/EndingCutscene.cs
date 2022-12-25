@@ -18,8 +18,8 @@ public class EndingCutscene : MonoBehaviour
         //move to middle of screen
         while (player.transform.position.x < -0.088f)
         {
-            player.transform.position += new Vector3(0.0025f, 0, 0);
-            yield return new WaitForSeconds(0.0025f);
+            player.transform.position += new Vector3(0.01f, 0, 0);
+            yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(2f);
         

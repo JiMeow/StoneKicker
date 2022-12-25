@@ -8,6 +8,8 @@ public class PlayerMove : MonoBehaviour
     int[,] area;
     GameObject[,] areaGameobjects;
     bool isMoveReady = true;
+    public float speed = 0.8f; 
+    
     void Start()
     {
         mapManager = GameObject.Find("GameController").GetComponent<MapManager>();
@@ -122,10 +124,10 @@ public class PlayerMove : MonoBehaviour
     IEnumerator MoveAnimation(GameObject game, int directx, int directy)
     {
         isMoveReady = false;
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
-            game.transform.position = new Vector3(game.transform.position.x + directy * .008f, game.transform.position.y - directx * .008f, 0);
-            yield return new WaitForSeconds(0.005f);
+            game.transform.position = new Vector3(game.transform.position.x + directy * .016f, game.transform.position.y - directx * .016f, 0);
+            yield return new WaitForSeconds(0.01f);
         }
         isMoveReady = true;
     }
@@ -134,15 +136,15 @@ public class PlayerMove : MonoBehaviour
     IEnumerator PlayerHitAnimation(GameObject game, int directx, int directy)
     {
         Sound.instance.PlayKickSound();
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
-            game.transform.position = new Vector3(game.transform.position.x + directy * .0025f, game.transform.position.y - directx * .0025f, 0);
-            yield return new WaitForSeconds(0.0025f);
+            game.transform.position = new Vector3(game.transform.position.x + directy * 0.01f * speed, game.transform.position.y - directx * 0.01f * speed, 0);
+            yield return new WaitForSeconds(0.01f);
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
-            game.transform.position = new Vector3(game.transform.position.x - directy * .0025f, game.transform.position.y + directx * .0025f, 0);
-            yield return new WaitForSeconds(0.0025f);
+            game.transform.position = new Vector3(game.transform.position.x - directy * 0.01f * speed, game.transform.position.y + directx * 0.01f * speed, 0);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 

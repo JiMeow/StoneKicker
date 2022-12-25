@@ -13,10 +13,10 @@ public class MenuStoneMove : MonoBehaviour
 
     IEnumerator MoveForwardCoroutine()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
-            transform.position = new Vector3(transform.position.x + speed * .008f, transform.position.y, 0);
-            yield return new WaitForSeconds(0.005f);
+            transform.position = new Vector3(transform.position.x + speed * .016f, transform.position.y, 0);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
@@ -28,8 +28,8 @@ public class MenuStoneMove : MonoBehaviour
     IEnumerator MoveBackCoroutine(float target)
     {
         while (transform.position.x > target) { 
-            transform.position = new Vector3(transform.position.x - speed * .008f, transform.position.y, 0);
-            yield return new WaitForSeconds(0.005f);
+            transform.position = new Vector3(transform.position.x - speed * .016f, transform.position.y, 0);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

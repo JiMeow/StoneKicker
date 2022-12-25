@@ -45,8 +45,8 @@ public class MenuMovePlayer : MonoBehaviour
     {
         while (transform.position.x < startPosX)
         {
-            transform.position = new Vector3(transform.position.x + speed * 0.0025f, transform.position.y, transform.position.z);
-            yield return new WaitForSeconds(0.0025f);
+            transform.position = new Vector3(transform.position.x + speed * 0.01f, transform.position.y, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(1f);
         // if end of screen move back
@@ -67,15 +67,15 @@ public class MenuMovePlayer : MonoBehaviour
     IEnumerator PlayerKickStoneCoroutine()
     {
         Sound.instance.PlayKickSound();
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
-            transform.position = new Vector3(transform.position.x + speed * .0025f, transform.position.y, 0);
-            yield return new WaitForSeconds(0.0025f);
+            transform.position = new Vector3(transform.position.x + speed * 0.01f, transform.position.y, 0);
+            yield return new WaitForSeconds(0.01f);
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
-            transform.position = new Vector3(transform.position.x - speed * .0025f, transform.position.y, 0);
-            yield return new WaitForSeconds(0.0025f);
+            transform.position = new Vector3(transform.position.x - speed * 0.01f, transform.position.y, 0);
+            yield return new WaitForSeconds(0.01f);
         }
         stone.GetComponent<MenuStoneMove>().MoveForward();
         yield return new WaitForSeconds(0.25f);
@@ -93,8 +93,8 @@ public class MenuMovePlayer : MonoBehaviour
     {
         while (transform.position.x > backPosX)
         {
-            transform.position = new Vector3(transform.position.x - speed * 0.0025f, transform.position.y, transform.position.z);
-            yield return new WaitForSeconds(0.0025f);
+            transform.position = new Vector3(transform.position.x - speed * 0.01f, transform.position.y, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(1f);
         stone.GetComponent<MenuStoneMove>().MoveBack(-0.7f);
