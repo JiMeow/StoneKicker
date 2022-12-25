@@ -76,6 +76,10 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.01f);
         }
         Time.timeScale = 1;
+        if (StageCount.instance.nowstage > 10)
+        {
+            SceneManager.LoadScene("Ending");
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

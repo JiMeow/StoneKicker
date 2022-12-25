@@ -12,6 +12,9 @@ public class PlayerDialogue : MonoBehaviour
 
     TMP_Text playerDialogue;
     string[] dialogueDejavu;
+    [SerializeField] 
+    string[] ending;
+    public float typeEndingSpeed = 0.1f;
 
     private void Awake()
     {
@@ -50,13 +53,40 @@ public class PlayerDialogue : MonoBehaviour
             "I feel like I've been in this exact situation before.",
             "I could have sworn I've seen this all before."
         };
-        Invoke("DejaVu",1.5f);
+        if (StageCount.instance.nowstage <= 10)
+        {
+            Invoke("DejaVu",1.5f);
+        }
+        else
+        {
+            Ending();
+        }
     }
 
     private void Update()
     {
         float parentXscale = transform.parent.transform.localScale.x/Mathf.Abs(transform.parent.transform.localScale.x);
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x)*parentXscale, transform.localScale.y, transform.localScale.z);
+    }
+    
+    public void Ending()
+    {
+        StartCoroutine(EndingCoroutine());
+    }
+
+    IEnumerator EndingCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        foreach (string s in ending)
+        {
+            foreach(char word in s)
+            {
+                playerDialogue.text += word;
+                yield return new WaitForSeconds(typeEndingSpeed);
+            }
+            yield return new WaitForSeconds(timeDisplay);
+            playerDialogue.text = "";
+        }
     }
 
     public void DejaVu()

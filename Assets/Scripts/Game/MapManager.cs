@@ -145,4 +145,8 @@ public class MapManager : MonoBehaviour
         area[0, 0] = rock; area[0, 0] = rock; area[0, 2] = rock; area[0, 3] = rock; area[0, 5] = rock; area[0, 7] = rock; area[0, 12] = rock; area[0, 13] = rock; area[1, 3] = rock; area[1, 5] = rock; area[1, 7] = rock; area[1, 8] = rock; area[1, 12] = rock; area[2, 1] = rock; area[2, 5] = rock; area[2, 8] = rock; area[2, 11] = tree; area[2, 13] = rock; area[3, 1] = tree; area[3, 9] = rock; area[4, 0] = rock; area[4, 3] = rock; area[4, 4] = rock; area[4, 5] = rock; area[4, 7] = rock; area[4, 9] = rock; area[4, 10] = rock; area[4, 13] = rock; area[5, 0] = rock; area[5, 3] = rock; area[5, 5] = rock; area[5, 7] = rock; area[5, 9] = rock; area[5, 12] = rock; area[6, 0] = rock; area[6, 1] = rock; area[6, 2] = rock; area[6, 3] = rock; area[6, 4] = rock; area[6, 5] = rock; area[6, 6] = rock; area[6, 8] = rock; area[6, 11] = rock; area[3, 0] = player;
     }
 
+   /* void _11()
+    {
+        area[5, 0] = 2; area[0, 1] = 2; area[0, 2] = 3; area[6, 5] = 2; area[4, 6] = 3; area[1, 6] = 2; area[5, 10] = 2; area[6, 11] = 2; area[5, 11] = 2; area[4, 11] = 2; area[3, 11] = 2; area[2, 11] = 2; area[1, 11] = 2; area[0, 11] = 2; area[6, 12] = 2; area[5, 12] = 2; area[4, 12] = 2; area[3, 12] = 2; area[2, 12] = 2; area[1, 12] = 2; area[0, 12] = 2;
+    }*/
 }
