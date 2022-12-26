@@ -91,6 +91,8 @@ public class PlayerDialogue : MonoBehaviour
             return;
         if (StageCount.instance.restart <= 4)
             return;
+        if (StageCount.instance.nowstage != 1)
+            return;
         int random = Random.Range(0, dialogueDejavu.Length);
         playerDialogue.text = "";
         StartCoroutine(TypeText(dialogueDejavu[random]));
