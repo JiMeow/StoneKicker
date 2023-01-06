@@ -28,10 +28,8 @@ public class ShowKeyBoard : MonoBehaviour
 
     private void Update()
     {
-        if (show)
+        if (show && SceneManager.GetActiveScene().name == "Game") 
         {
-            if (SceneManager.GetActiveScene().name != "Game")
-                return;
             gameObject.SetActive(true);
         }
         else
@@ -42,10 +40,8 @@ public class ShowKeyBoard : MonoBehaviour
 
     public void UpdateShow()
     {
-        if (show)
+        if (show && SceneManager.GetActiveScene().name == "Game")
         {
-            if (SceneManager.GetActiveScene().name != "Game")
-                return;
             gameObject.SetActive(true);
         }
         else

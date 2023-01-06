@@ -36,4 +36,9 @@ public class MenuButton : MonoBehaviour
     {
         Application.OpenURL("https://github.com/JiMeow/StonePuzzle");
     }
+
+    public void RestartStage()
+    {
+        GameManager.instance.RestartStage();
+    }
 }

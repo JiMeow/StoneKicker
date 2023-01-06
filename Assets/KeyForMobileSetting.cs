@@ -11,6 +11,7 @@ public class KeyForMobileSetting : MonoBehaviour
     {
         show = ShowKeyBoard.instance.show;
         stonePic = GetComponent<Image>();
+        stonePic.color = show ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0.25f);
     }
     
     public void on()
