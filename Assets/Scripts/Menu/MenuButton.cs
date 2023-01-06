@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
+    private void Start()
+    {
+        ShowKeyBoard.instance.UpdateShow();
+    }
+
     public void ButtonLoadGameScene()
     {
         SceneManager.LoadScene("Game");

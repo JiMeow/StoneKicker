@@ -2966,8 +2966,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -433.39032, y: 144}
-  m_SizeDelta: {x: 482.4, y: 94.8}
+  m_AnchoredPosition: {x: -373.5, y: 128.67}
+  m_SizeDelta: {x: 602.3, y: 125.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1876262700
 MonoBehaviour:
@@ -3002,7 +3002,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1. You can move character by arrow key
+  m_Text: 1. You can move character by arrow key  (on mobile please turn on in setting)
 --- !u!222 &1876262701
 CanvasRenderer:
   m_ObjectHideFlags: 0

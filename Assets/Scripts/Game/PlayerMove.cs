@@ -32,35 +32,39 @@ public class PlayerMove : MonoBehaviour
         int[] playerPos = FindPlayer();
         int x = playerPos[0];
         int y = playerPos[1];
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || KeyBoardInputPlayerMove.instance.moveUp)
         {
             if (NotIndexOutOfRange(playerPos, -1, 0))
             {
                 Move(playerPos,-1, 0);
             }
+            KeyBoardInputPlayerMove.instance.moveUp = false;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || KeyBoardInputPlayerMove.instance.moveDown)
         {
             if (NotIndexOutOfRange(playerPos, +1, 0))
             {
                 Move(playerPos, +1, 0);
             }
+            KeyBoardInputPlayerMove.instance.moveDown = false;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || KeyBoardInputPlayerMove.instance.moveLeft)
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             if (NotIndexOutOfRange(playerPos, 0, -1))
             {
                 Move(playerPos, 0, -1);
             }
+            KeyBoardInputPlayerMove.instance.moveLeft = false;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || KeyBoardInputPlayerMove.instance.moveRight)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             if (NotIndexOutOfRange(playerPos, 0, +1))
             {
                 Move(playerPos, 0, +1);
             }
+            KeyBoardInputPlayerMove.instance.moveRight = false;
         }
     }
 
